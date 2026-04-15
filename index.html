@@ -1,43 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Health Awareness</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awareness Wave</title>
+  <link rel="icon" type="image/png" href="img/brain.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0b2c4a, #123b63);
+      color: white;
+    }
+
+    header {
+      backdrop-filter: blur(8px);
+      background: rgba(11,37,64,0.95);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+.logo-container {
+  display: flex;
+  align-items: center; /* vertical alignment */
+}
+
+.logo {
+  width: 120px;   /* adjust size */
+  height: 70px;
+  margin-right: 10px; /* space between logo and text */
+}
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: #ffd54f;
+      transition: width 0.3s ease;
+      border-radius: 5px;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+/* Hero Section */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background: linear-gradient(rgba(13,42,71,0.7), rgba(13,42,71,0.7)),   
+    url('https://images.unsplash.com/photo-1584515933487-779824d29309') no-repeat center/cover;
+    background-size:cover;
+}
+
+.hero h1 { font-size:50px; }
+.hero p { margin:20px 0; font-size:18px; }
+.hero button {
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  background:#00c896;
+  color:white;
+  cursor:pointer;
+}
+
+
+/* About Content */
+.mission-vision {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+  url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;             /* 🔥 full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-attachment: fixed;
+}
+
+.mission-vision h1 {
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+/* Cards layout */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Glass card */
+.card {
+  width: 320px;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* Icon */
+.icon {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+/* Text */
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.cta {
+  display: block;
+  margin: 40px auto 0 auto;  /* 🔥 centers horizontally */
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  background: #00c896;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 200px 30px;
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+    .about img {
+      width: 300px;
+      border-radius: 50%;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 20px;
+      width: 300px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0b2540;
+    }
+
+    /* Contact Button */
+    .contact-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00c896;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 200, 150, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 999;
+    }
+
+    .contact-button:hover {
+      background: #00b380;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 200, 150, 0.6);
+    }
+
+    /* Contact Modal */
+    .contact-modal {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 280px;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-modal.show {
+      display: block;
+    }
+
+    .contact-option {
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-option:last-child {
+      border-bottom: none;
+    }
+
+    .contact-option:hover {
+      background: #f5f5f5;
+    }
+
+    /* Support Modal */
+    .support-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 280px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .support-modal.show {
+      display: block;
+    }
+
+        /* Container */
+    .container {
+        padding: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    
+
+    /* Cards */
+    .card {
+        background-color: #8c8c8c;
+        color: white;
+        padding: 20px;
+        border-radius: 20px;
+        width: 300px;
+        line-height: 1.5;
+        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .card.large {
+        width: 350px;
+    }
+
+ #notesContainer {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.note {
+    background: #fff9a8;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    transform: rotate(-1deg);
+    transition: transform 0.2s ease;
+}
+
+.note:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.note h3 {
+    margin-top: 0;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: none;
+    background: crimson;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/* Form styling */
+.form-container {
+    background: #eaeaea;
+    color: black;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: auto;
+}
+
+input, textarea {
+    width: 95%;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #0f2f4f;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Notes grid */
+#notesContainer {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Sticky note style */
+.note {
+    background: #3b2585;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+    transform: rotate(-2deg);
+    position: relative;
+}
+
+.note h3 {
+    margin: 0 0 5px;
+}
+
+.note p {
+    margin: 5px 0;
+}
+
+/* Delete button */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: crimson;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.image-section {
+    padding: 80px 30px;
+    text-align: center;
+}
+
+.image-section h1 {
+    margin-bottom: 40px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Test Section */
+.test-section {
+    padding: 100px 30px;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(0, 200, 150, 0.1), rgba(100, 150, 255, 0.1));
+    border-top: 2px solid rgba(0, 200, 150, 0.3);
+    border-bottom: 2px solid rgba(0, 200, 150, 0.3);
+}
+
+.test-section h1 {
+    font-size: 44px;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #00c896, #64b5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.test-section p {
+    font-size: 18px;
+    color: #d0d0d0;
+    margin-bottom: 30px;
+}
+
+/* Scroll animation base */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional variations */
+.reveal-left {
+    transform: translateX(-60px);
+}
+
+.reveal-right {
+    transform: translateX(60px);
+}
+/* Base reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.7s ease;
+}
+
+/* Activated */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delay using CSS variable */
+.reveal.stagger {
+    transition-delay: var(--delay);
+}
+
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Mental Health Awareness</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about">
-            <h2>About Mental Health</h2>
-            <p>Mental health is an important aspect of our overall well-being. It affects how we think, feel, and act.</p>
-        </section>
-        <section id="resources">
-            <h2>Resources</h2>
-            <p>Here are some resources for support:</p>
-            <ul>
-                <li><a href="https://www.mentalhealth.gov/">MentalHealth.gov</a></li>
-                <li><a href="https://www.nami.org/">NAMI</a></li>
-                <li><a href="https://www.samaritans.org/">Samaritans</a></li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>If you need to talk, reach out to us!</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Mental Health Awareness. All Rights Reserved.</p>
-    </footer>
+
+<!-- NAVBAR -->
+<header>
+  <div class="logo-container">
+    <a href="index.html">
+    <img src="img/brain.png" alt="Logo" class="logo">
+    </a>
+  <h2>Awareness Wave</h2>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#facts">Facts</a>
+    <a href="#contact">Talk to Us</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Mental Health Matters</h1>
+  <p>Awareness Wave is a safe space for everyone. We aim to advocate mental health and inform people about real problems.<br>
+    We welcome those willing to learn and those seeking help.</p>
+  <p>This website offers information on mental health, how to spot signs, and how to help. Everyone has a purpose—we just need to talk about it.</p>
+  <button id="supportBtn" class="button" style="padding:12px 30px; border:none; border-radius:25px; background:#00c896; color:white; cursor:pointer; text-decoration:none; display:inline-block;">Get Support</button>
+  
+  <div class="support-modal" id="supportModal">
+    <a href="https://findahelpline.com/countries/ph/topics/suicidal-thoughts" class="contact-option">
+      🆘 Suicide Hotline
+    </a>
+    <a href="https://mhanational.org/resources/self-help-tools/" class="contact-option">
+      🛠️ Self Help Tools
+    </a>
+  </div>
+</section>
+
+<section class="image-section">
+  <h1>You're Not Alone</h1>
+  <div class="image-grid">
+    <img src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee8" alt="Support">
+    <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2" alt="Hope">
+    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773" alt="Peace">
+  </div>
+</section>
+
+<!-- TEST SECTION -->
+<section id="test" class="test-section reveal">
+  <h1>Take a test and find out</h1>
+  <p>Discover insights about your mental health and wellbeing</p>
+  <a href="https://screening.mhanational.org/screening-tools/" class="cta">Explore</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="mission-vision reveal">
+  <h1>Mission & Vision</h1>
+
+  <div class="cards reveal stagger">
+    <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="icon">
+      <h2>Mission</h2>
+      <p>
+        To provide a safe and welcoming space for mental health awareness by 
+        educating individuals, recognizing warning signs, and promoting support.
+      </p>
+    </div>
+
+    <div class="card reveal stagger">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="icon">
+      <h2>Vision</h2>
+      <p>
+        A society where mental health is openly discussed and supported—where 
+        every individual feels safe, valued, and empowered.
+      </p>
+    </div>
+  </div>
+  <a href="https://www.who.int/health-topics/mental-health#tab=tab_1" class="cta" style="display:inline-block; text-decoration:none; color:white;">Learn More</a>
+</section>
+
+<div id="facts" class="container">
+    <h1 style="text-align:center;">Facts</h1>
+    <div class="card-container">
+    <div class="card reveal stagger">
+      <h3>🧠 Mental Health</h3>
+        1 in 8 people worldwide live with a mental health disorder like anxiety or depression. Many people have heard about mental health but lack the true means to understand it properly.
+    </div>
+
+    <div class="card reveal stagger">
+      <h3>💙 Support</h3>
+        Depression can affect a person's mood, energy, sleep, and ability to function daily. It is more than just feeling sad—it can deeply impact work, school, and relationships.
+    </div>
+
+    <div class="card reveal stagger">
+      <h3>🌱 Healing</h3>
+        Anxiety disorders involve intense, excessive worry or fear that interferes with daily life. Symptoms include restlessness, rapid heartbeat, and difficulty concentrating.
+    </div>
+
+    <div class="card reveal stagger">
+      <h3>🤝 Awareness</h3>
+        Many individuals hesitate to talk about mental health due to stigma. Open conversations help reduce shame and encourage support.
+    </div>
+
+    <div class="card large reveal stagger">
+      <h3>💪 Recovery</h3>
+        Recognizing warning signs early can make a big difference in recovery. Seeking help from professionals and support systems is key to healing and resilience.
+    </div>
+    </div>
+</div>
+
+</section>
+
+
+<section id="contact" class="form-container reveal stagger">
+    <h1 style="text-align: center;">Leave a Message</h1>
+
+    <form id="feedbackForm">
+        <label>Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Email:</label>
+        <input type="email" id="email">
+
+        <label>Message:</label>
+        <textarea id="feedback" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<div id="notesContainer"></div>
+
+
+<footer>
+  <p>© 2026 Awareness Wave</p>
+</footer>
+
+<button class="contact-button" id="contactBtn">
+  📞 Contact Us
+</button>
+
+<div class="contact-modal" id="contactModal">
+  <a href="tel:+639456092557" class="contact-option">
+    📞 Call: +639456092557
+  </a>
+  <a href="mailto:awarenesswavesupport@gmail.com" class="contact-option">
+    ✉️ Email: awarenesswavesupport@gmail.com
+  </a>
+</div>
 </body>
+
+<script>
+// Contact Button Modal
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+
+contactBtn.addEventListener("click", function() {
+    contactModal.classList.toggle("show");
+});
+
+// Support Button Modal
+const supportBtn = document.getElementById("supportBtn");
+const supportModal = document.getElementById("supportModal");
+
+supportBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    supportModal.classList.toggle("show");
+});
+
+// Close modal when clicking outside
+document.addEventListener("click", function(event) {
+    if (!event.target.closest(".contact-button") && !event.target.closest(".contact-modal")) {
+        contactModal.classList.remove("show");
+    }
+    if (!event.target.closest("#supportBtn") && !event.target.closest(".support-modal")) {
+        supportModal.classList.remove("show");
+    }
+});
+
+const form = document.getElementById("feedbackForm");
+const notesContainer = document.getElementById("notesContainer");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const feedback = document.getElementById("feedback").value;
+
+    const note = document.createElement("div");
+    note.classList.add("note");
+
+    note.innerHTML = `
+        <button class="delete-btn">×</button>
+        <h3>${name}</h3>
+        <p><strong>Email:</strong> ${email}</p>
+        <p>${feedback}</p>
+    `;
+
+    // Delete note
+    note.querySelector(".delete-btn").addEventListener("click", function() {
+        note.remove();
+    });
+
+    notesContainer.appendChild(note);
+
+    form.reset();
+});
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const visiblePoint = 120;
+
+        if (elementTop < windowHeight - visiblePoint) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach((el, index) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const visiblePoint = 120;
+
+        if (elementTop < windowHeight - visiblePoint) {
+            el.classList.add("active");
+
+            // Apply stagger delay only once
+            if (el.classList.contains("stagger") && !el.style.getPropertyValue("--delay")) {
+                el.style.setProperty("--delay", `${index * 0.15}s`);
+            }
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
 </html>
